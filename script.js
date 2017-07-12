@@ -78,13 +78,10 @@ var todoList = {
   }
 }
 
+// 1. We want access to the Display Todos Button
+var displayTodosButton = document.getElementById('displayTodosButton');
 
-
-/*  Commented out the intro exercise
-
-var testArray = ["item 1", "item 2", "item 3"];
-
-for (var i = 0; i < testArray.length; i++) {
-  console.log(testArray[i]);
-}
-*/
+// 2. We want to display todos when the Display Todos Button is pressed
+displayTodosButton.addEventListener('click', function() {
+  todoList.displayTodos();
+});
