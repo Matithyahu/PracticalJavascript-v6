@@ -78,10 +78,13 @@ var todoList = {
   }
 }
 
-// 1. We want access to the Display Todos Button
 var displayTodosButton = document.getElementById('displayTodosButton');
+var toggleAllButton = document.getElementById('toggleAllButton');
 
-// 2. We want to display todos when the Display Todos Button is pressed
 displayTodosButton.addEventListener('click', function() {
   todoList.displayTodos();
+});
+
+toggleAllButton.addEventListener('click', function() {
+  todoList.toggleAll();
 });
