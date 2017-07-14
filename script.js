@@ -84,5 +84,17 @@ var handler = {
   },
   toggleAll: function() {
     todoList.toggleAll();
+  },
+  addTodo: function() {
+    var addTodoTextInput = document.getElementById('addTodoTextInput');
+    todoList.addTodo(addTodoTextInput.value);
+    addTodoTextInput.value = '';
+  },
+  changeTodo: function() {
+    var changeTodoNumberInput = document.getElementById('changeTodoNumberInput');
+    var changeTodoTextInput = document.getElementById('changeTodoTextInput');
+    todoList.changeTodo(changeTodoNumberInput.valueAsNumber, changeTodoTextInput.value);
+    changeTodoNumberInput.value = '';
+    changeTodoTextInput = '';
   }
 }
