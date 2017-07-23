@@ -81,14 +81,17 @@ var todoList = {
 var handler = {
   displayTodos: function() {
     todoList.displayTodos();
+    view.displayTodos();
   },
   toggleAll: function() {
     todoList.toggleAll();
+    view.displayTodos();
   },
   addTodo: function() {
     var addTodoTextInput = document.getElementById('addTodoTextInput');
     todoList.addTodo(addTodoTextInput.value);
     addTodoTextInput.value = '';
+    view.displayTodos();
   },
   changeTodo: function() {
     var changeTodoNumberInput = document.getElementById('changeTodoNumberInput');
@@ -96,16 +99,19 @@ var handler = {
     todoList.changeTodo(changeTodoNumberInput.valueAsNumber, changeTodoTextInput.value);
     changeTodoNumberInput.value = '';
     changeTodoTextInput.value = '';
+    view.displayTodos();
   },
   deleteTodo: function() {
     var deleteTodoPositionInput = document.getElementById('deleteTodoPositionInput');
     todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
     deleteTodoPositionInput.value = '';
+    view.displayTodos();
   },
   toggleCompleted: function() {
     var toggleCompletedPositionInput = document.getElementById('toggleCompletedPositionInput');
     todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber);
     toggleCompletedPositionInput.value = '';
+    view.displayTodos();
   }
 };
 
@@ -115,9 +121,20 @@ var view = {
     todosUl.innerHTML = '';
     for (var i = 0; i < todoList.todos.length; i++) {
       var todoLi = document.createElement('li');
-      todoLi.textContent = todoList.todos[i].todoText;
+      var todoTextWithCompletionStatus = '';
+
+      if (todoList.todos[i].completed === true) {
+        todoTextWithCompletionStatus = '(x) ' + todoList.todos[i].todoText;
+      } else {
+        todoTextWithCompletionStatus = '( ) ' + todoList.todos[i].todoText;
+      }
+
+      todoLi.textContent = todoTextWithCompletionStatus;
       todosUl.appendChild(todoLi);
     }
 
   }
 };
+
+// Write out the stored todo list items
+view.displayTodos();
