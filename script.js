@@ -119,22 +119,24 @@ var view = {
   displayTodos: function() {
     var todosUl = document.querySelector('ul');
     todosUl.innerHTML = '';
-    for (var i = 0; i < todoList.todos.length; i++) {
+    todoList.todos.forEach(function(item) {
       var todoLi = document.createElement('li');
       var todoTextWithCompletionStatus = '';
 
-      if (todoList.todos[i].completed === true) {
-        todoTextWithCompletionStatus = '(x) ' + todoList.todos[i].todoText;
+      if (item.completed === true) {
+        todoTextWithCompletionStatus = '(x) ' + item.todoText;
       } else {
-        todoTextWithCompletionStatus = '( ) ' + todoList.todos[i].todoText;
+        todoTextWithCompletionStatus = '( ) ' + item.todoText;
       }
 
       todoLi.textContent = todoTextWithCompletionStatus;
       todosUl.appendChild(todoLi);
-    }
+    })
 
   }
 };
 
 // Write out the stored todo list items
 view.displayTodos();
+
+// tools
